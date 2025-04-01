@@ -31,7 +31,7 @@ public class EmployeeApplication{
                     EmployeeBussiness.updateEmployee(sc);
                     break;
                 case 4:
-                    
+                    EmployeeBussiness.deleteEmployee(sc);
                     break;
                 case 5:
                     break;

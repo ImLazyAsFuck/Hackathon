@@ -111,11 +111,36 @@ public class EmployeeBussiness{
         System.out.println("0. Exit");
     }
 
-    public static void deleteMenu(){
+    public static void deleteEmployee(Scanner sc){
         if(employees.isEmpty()){
             System.out.println("Employee list is empty");
             return;
         }
-
+        System.out.print("Enter employee ID: ");
+        String id = sc.nextLine();
+        int found = -1;
+        for(int i = 0; i < employees.size(); i++){
+            if(id.equals(employees.get(i).getEmployeeId())){
+                found = i;
+            }
+        }
+        if(found == -1){
+            System.out.println("Employee not found");
+            return;
+        }
+        Employee foundEmployee = employees.get(found);
+        while(true){
+            System.out.print("Do you want to delete the employee (y/n)? : ");
+            String choice = sc.nextLine();
+            if(!choice.equalsIgnoreCase("y") || !choice.equalsIgnoreCase("n")){
+                System.out.println("Invalid choice");
+                continue;
+            }
+            if(choice.equalsIgnoreCase("y")){
+                employees.remove(foundEmployee);
+            }else{
+                return;
+            }
+        }
     }
 }
